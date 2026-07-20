@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "CopilotStudioAgent MCP Server (local dev)",
+      "type": "dotnet",
+      "request": "launch",
+      "preLaunchTask": "Start dev dependencies",
+      "projectPath": "${workspaceFolder}/src/CopilotStudioAgent.Mcp.Server/CopilotStudioAgent.Mcp.Server.csproj",
+      "envFile": "${workspaceFolder}/.env.dev",
+      "env": {
+        // Override the container-internal CopilotStudioAgent URL with the host-accessible URL
+        // that the dev Compose file exposes on port 6875.
+        "COPILOTSTUDIOAGENT_BASE_URL": "http://localhost:6875",
+        // Force HTTP transport so stdout stays clean for the debugger (ADR-0009).
+        "COPILOTSTUDIOAGENT_MCP_TRANSPORT": "http",
+        // Bind to the configured MCP port instead of Kestrel's default dev port.
+        "ASPNETCORE_URLS": "http://localhost:3001",
+      },
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    }
+  ]
+}

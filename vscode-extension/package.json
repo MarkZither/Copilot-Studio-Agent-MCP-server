@@ -1,0 +1,92 @@
+{
+  "name": "copilotstudioagent-mcp-server",
+  "displayName": "CopilotStudioAgent MCP Server",
+  "description": "Minimal VS Code extension for registering the CopilotStudioAgent MCP server with Copilot and other MCP clients.",
+  "version": "0.0.1",
+  "publisher": "MarkZither",
+  "engines": {
+    "vscode": "^1.120.0"
+  },
+  "extensionKind": [
+    "workspace"
+  ],
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "keywords": [
+    "M365 Copilot",
+    "mcp",
+    "model context protocol",
+    "language-model-tools",
+    "copilot",
+    "knowledge-base"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/MarkZither/Copilot-Studio-Agent-MCP-server#readme",
+  "pricing": "Free",
+  "galleryBanner": {
+    "color": "#DD0000",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarkZither/Copilot-Studio-Agent-MCP-server"
+  },
+  "bugs": {
+    "url": "https://github.com/MarkZither/Copilot-Studio-Agent-MCP-server/issues"
+  },
+  "icon": "media/icon.png",
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "copilotstudioagent",
+        "label": "CopilotStudioAgent"
+      }
+    ],
+    "configuration": {
+      "title": "CopilotStudioAgent MCP Server",
+      "properties": {
+        "copilotstudioagent.url": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "URL of your Copilot Studio Agent. Example: `https://demo.copilotstudioagent.com/`"
+        },
+        "copilotstudioagent.tokenId": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Copilot Studio Agent API token ID. Generate under Copilot Studio Agent → **Settings → API Tokens**."
+        },
+        "copilotstudioagent.tokenSecret": {
+          "type": "string",
+          "default": "",
+          "secret": true,
+          "markdownDescription": "Copilot Studio Agent API token secret corresponding to `copilotstudioagent.tokenId`."
+        }
+      }
+    },
+    "commands": [
+    ]
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --platform=node --external:vscode --outfile=dist/extension.js",
+    "watch": "esbuild src/extension.ts --bundle --platform=node --external:vscode --outfile=dist/extension.js --watch",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "@types/vscode": "^1.120.0",
+    "@vscode/vsce": "^3",
+    "esbuild": "^0.28",
+    "eslint": "^10",
+    "typescript": "~6.0",
+    "typescript-eslint": "^8",
+    "vitest": "^4"
+  }
+}

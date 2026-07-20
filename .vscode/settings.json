@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /home/mark/github/Copilot-Studio-Agent-MCP-server && dotnet build src/CopilotStudioAgent\\.Mcp\\.Server/CopilotStudioAgent\\.Mcp\\.Server\\.csproj -nologo && dotnet exec tests/CopilotStudioAgent\\.Mcp\\.Server\\.Tests/bin/Debug/net10\\.0/CopilotStudioAgent\\.Mcp\\.Server\\.Tests\\.dll --output Normal --show-stdout All$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
